@@ -42,11 +42,17 @@ class Product:
         return f"{self.name}, Price: {self.price}, Quantity: {self.quantity}"
 
     def buy(self, quantity: float) -> float:
+        """Initializes a Product instance.
+
+        Args:
+            name (str): The name of the product.
+            price (float): The price of the product. Must be non-negative.
+            quantity (float): The initial quantity of the product. Must be non-negative.
+
+        Raises:
+            ValueError: If name is empty, or if price or quantity is negative.
         """
-        Buys a specified quantity of the product.
-        Returns the total price for the purchase.
-        Raises an exception if the quantity is invalid or insufficient.
-        """
+
         if not self.is_active():
             raise Exception("Product is inactive.")
         if quantity <= 0:
@@ -59,19 +65,11 @@ class Product:
         return total_price
 
 
-def main():
-    bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
-    mac = Product("MacBook Air M2", price=1450, quantity=100)
+bose = Product("Bose QuietComfort Earbuds", price=250, quantity=500)
+mac = Product("MacBook Air M2", price=1450, quantity=100)
 
-    print(bose.buy(50))
-    print(mac.buy(100))
-    print(mac.is_active())
+bose.show()
+mac.show()
 
-    bose.show()
-    mac.show()
-
-    bose.set_quantity(1000)
-    bose.show()
-    
-if __name__ == "__main__":
-    main()
+bose.set_quantity(1000)
+bose.show()

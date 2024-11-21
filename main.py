@@ -1,16 +1,35 @@
-
 import products
 import store
 
-product_list = [ products.Product("MacBook Air M2", price=1450, quantity=100),
-                 products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
-                 products.Product("Google Pixel 7", price=500, quantity=250)
-               ]
-best_buy = store.Store(product_list)
+def main():
+    """Main function to initialize the store and start the application.
+
+    This function sets up a list of predefined products, initializes the store with these products, 
+    and starts the user interaction loop.
+
+    Returns:
+        None
+    """
+
+    product_list = [
+        products.Product("MacBook Air M2", price=1450, quantity=100),
+        products.Product("Bose QuietComfort Earbuds", price=250, quantity=500),
+        products.Product("Google Pixel 7", price=500, quantity=250),
+    ]
+    best_buy = store.Store(product_list)
+    start(best_buy)
 
 
 def start(best_buy):
-    """Displays a menu for the user and performs actions based on the selection."""
+    """Displays a menu for the user and executes actions based on their selection.
+
+    Args:
+        best_buy (Store): The store object containing product inventory and operations.
+
+    Returns:
+        None
+    """
+
     while True:
         # Display the menu options
         print("\nStore Menu")
@@ -38,7 +57,7 @@ def start(best_buy):
         elif choice == "2":
             # Show total quantity of products in the store
             total_quantity = best_buy.get_total_quantity()
-            print(f"\nTotal quantity of {total_quantity} products in store1")
+            print(f"\nTotal quantity of {total_quantity} products in store")
 
         elif choice == "3":
             # Make an order
@@ -100,4 +119,5 @@ def start(best_buy):
             print("Invalid choice. Please enter a number between 1 and 4.")
 
 
-start(best_buy)
+if __name__ == "__main__":
+    main()
